@@ -1,0 +1,23 @@
+
+@(cartItems: Seq[CartItem])(implicit messages: Messages)
+@import helper._
+
+@main("Welcome to Play") {
+
+
+<div>
+    <h4>Cart items selected</h4>
+
+    <ul>
+        @for(c <- cartItems) {
+        <li>@c.cartId (@c.productName)</li>
+        }
+    </ul>
+
+    @helper.form(action = routes.Application.clearCart()) {
+    <input type="submit" value="Clear Cart"/>
+    }
+
+</div>
+
+}

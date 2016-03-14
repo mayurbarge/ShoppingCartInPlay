@@ -1,0 +1,32 @@
+@(products: Seq[Product], cartItems: List[CartItem], selectProductsForm: Form[SelectProductsForm])(implicit messages: Messages)
+@import helper._
+
+@main("Welcome to Play") {
+
+<div>
+    <h3>Products Available</h3>
+
+    <ul>
+    @for(p <- products) {
+    <li>@p.name ($@p.price)</li>
+    }
+    </ul>
+    ￼
+
+    @helper.form(action = routes.Application.purchaseProduct()) {
+
+    @helper.select(selectProductsForm("productName"), products.map(s => s.name -> s.name) )
+
+
+    <input type="submit" value="Add To Cart"/>
+    }
+
+    <div id="Cart">
+    @views.html.showCart(cartItems)
+    </div>
+
+
+
+</div>
+
+}

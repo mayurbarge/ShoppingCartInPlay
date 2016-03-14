@@ -1,0 +1,15 @@
+@(products: Seq[Product])
+
+@main("Welcome to Play") {
+
+<div>
+    <h2>All products:</h2>
+    <table>
+        <tr><th>Name</th><th>Price</th></tr>
+        @for(d <- products){
+        <tr><td>@d.name</td><td>@d.price</td></tr>
+        }
+    </table>
+</div>
+
+}
